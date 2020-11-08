@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/mathiusjohnson/tiny-app-mentor/issues"
   },
-  "homepage": "https://github.com/mathiusjohnson/tiny-app-mentor#readme"
+  "homepage": "https://github.com/mathiusjohnson/tiny-app-mentor#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
