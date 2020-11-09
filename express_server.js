@@ -23,9 +23,16 @@ app.get("/hello", (req, res) => {
   res.send("<html><body>Hello <b>World</b></body></html>\n");
 });
 
+app.set("view engine", "ejs");
+
 app.get("/urls", (req, res) => {
   const templateVars = { urls: urlDatabase };
   res.render("urls_index", templateVars);
 });
 
-app.set("view engine", "ejs");
+app.get("/urls/:shortURL", (req, res) => {
+  console.log("req.params: ", req.params);
+  const templateVars = { 
+    shortURL: req.params.shortURL, longURL: req.params.url };
+  res.render("urls_show", templateVars);
+});
