@@ -51,13 +51,22 @@ app.get("/urls/:shortURL", (req, res) => {
   res.render("urls_show", templateVars);
 });
 
-app.post("/urls/:shortURL", (req, res) => {
+app.post("/urls/:shortURL/delete", (req, res) => {
   delete urlDatabase[req.params.shortURL]
   res.redirect(302, '/urls');
 })
 app.get("/urls/new", (req, res) => {
   res.render("urls_new");
 });
+
+app.post("/urls/:shortURL/update", (req, res) => {
+  const shortURL = req.params.shortURL;
+    const editFromUser = req.body.longURL;
+    console.log("edit from user: ", editFromUser);
+    urlDatabase[shortURL] = editFromUser;
+    console.log(urlDatabase[shortURL]);
+    res.redirect('/urls/');
+})
 
 app.get("/u/:shortURL", (req, res) => {
   console.log("shorturl: ", req.params.shortURL);
